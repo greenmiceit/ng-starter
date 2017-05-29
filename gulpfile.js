@@ -40,4 +40,12 @@ gulp.task('serve', ['build'], function () {
   watch("./build/**/*.*").pipe(connect.reload());
 });
 
-gulp.task('default', ['serve']);
+gulp.task('dev', ['build'], function () {
+  connect.server({
+    livereload: true,
+    root: './src'
+  });
+  watch("./src/**/*.*").pipe(connect.reload());
+});
+
+gulp.task('default', ['dev']);
